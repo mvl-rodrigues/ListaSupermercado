@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Supermercado</string>
+
+    <!--
+        Elementos da tela cadastro
+        -->
+
+    <string name="cadastrar_txt_nome">Nome</string>
+    <string name="cadastrar_hint_nome">Digite o nome do item</string>
+
+    <string name="cadastrar_txt_preco">Preço</string>
+    <string name="cadastrar_hint_preco">Preço por Unidade, Kg ou L</string>
+
+    <string name="cadastrar_txt_quantidade">Quantidade</string>
+    <string name="cadastrar_hint_quantidade">00</string>
+
+    <string name="cadastrar_radio_1">Unidade</string>
+    <string name="cadastrar_radio_2">Kg</string>
+    <string name="cadastrar_radio_4">L</string>
+
+    <string name="cadastrar_txt_categoria">Categoria</string>
+    <string-array name="cadastrar_unidade">
+        <item>Outros</item>
+        <item>Açougue</item>
+        <item>Hortifruti</item>
+        <item>Frios e Laticínios</item>
+        <item>Grãos e Massas</item>
+        <item>Doces e Salgados</item>
+        <item>Bebidas</item>
+        <item>Higiene e Limpeza</item>
+    </string-array>
+
+    <string name="cadastrar_button_salvar">Incluir Item</string>
+
+    <!--
+        Elementos da tela principal
+        -->
+
+    <string name="principal_txt_lista">Lista de Compras</string>
+
+    <string-array name="ordenar">
+        <item>Todos</item>
+        <item>Outros</item>
+        <item>Açougue</item>
+        <item>Hortifruti</item>
+        <item>Frios e Laticínios</item>
+        <item>Grãos e Massas</item>
+        <item>Doces e Salgados</item>
+        <item>Bebidas</item>
+        <item>Higiene e Limpeza</item>
+    </string-array>
+
+    <string name="autor">Versão Beta 0.1 | Desenvolvido por Victor Rodrigues</string>
+
+    <!--
+        Elementos da tela item
+        -->
+
+    <string name="item_txt_reais">R$ </string>
+
+</resources>
