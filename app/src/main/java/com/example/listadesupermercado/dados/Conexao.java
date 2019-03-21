@@ -1,4 +1,4 @@
-package com.example.listadesupermercado.util;
+package com.example.listadesupermercado.dados;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

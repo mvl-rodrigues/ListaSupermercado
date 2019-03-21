@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.listadesupermercado.util.Conexao;
+import com.example.listadesupermercado.dados.Conexao;
 import com.example.listadesupermercado.model.Produto;
 
 import java.util.ArrayList;

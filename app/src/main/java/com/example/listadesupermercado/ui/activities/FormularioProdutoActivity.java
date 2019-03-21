@@ -25,7 +25,7 @@ import com.example.listadesupermercado.R;
 
 import java.util.List;
 
-public class FormularioActivity extends AppCompatActivity {
+public class FormularioProdutoActivity extends AppCompatActivity {
 
     private EditText nome;
     private EditText preco;

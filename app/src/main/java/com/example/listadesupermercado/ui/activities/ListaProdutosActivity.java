@@ -18,7 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.listadesupermercado.util.ListaUtil;
+import com.example.listadesupermercado.ui.ListaProdutosViewUtil;
 import com.example.listadesupermercado.model.Produto;
 import com.example.listadesupermercado.ui.adapter.ProdutoAdapter;
 import com.example.listadesupermercado.dao.ProdutoDAO;
@@ -27,7 +27,7 @@ import com.example.listadesupermercado.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaActivity extends AppCompatActivity {
+public class ListaProdutosActivity extends AppCompatActivity {
 
     private ListView listView;
     private ProdutoDAO dao;
@@ -37,7 +37,7 @@ public class ListaActivity extends AppCompatActivity {
     private TextView QtdItens;
     private TextView custoTotal;
     private Spinner ordenar;
-    private ListaUtil listaUtil;
+    private ListaProdutosViewUtil listaProdutosViewUtil;
     private FloatingActionButton fab;
     private TextView custoSubtatol;
 
@@ -81,21 +81,21 @@ public class ListaActivity extends AppCompatActivity {
         /*
             Verificando a quantidade de itens que ainda falta comprar
          */
-        QtdItens.setText(String.valueOf(listaUtil.calcItens(produtosAuxiliar)));
-        custoTotal.setText(listaUtil.calcValor(produtosAuxiliar));
-        custoSubtatol.setText(listaUtil.calcValorSubtotaL(produtosAuxiliar));
+        QtdItens.setText(String.valueOf(listaProdutosViewUtil.ItensQueFalta(produtosAuxiliar)));
+        custoTotal.setText(listaProdutosViewUtil.calculaValorTotal(produtosAuxiliar));
+        custoSubtatol.setText(listaProdutosViewUtil.calculaValorSubtotaL(produtosAuxiliar));
 
         registerForContextMenu(listView);
     }
 
     private void novoItem() {
-        startActivity(new Intent(ListaActivity.this, FormularioActivity.class));
+        startActivity(new Intent(ListaProdutosActivity.this, FormularioProdutoActivity.class));
     }
 
     private void ordenaListaPorCategoria() {
         if (!ordenar.getSelectedItem().toString().equalsIgnoreCase("Todos")){
             ordenarList(ordenar.getSelectedItem().toString());
-            Toast.makeText(ListaActivity.this, "Categoria selecionada: " + ordenar.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(ListaProdutosActivity.this, "Categoria selecionada: " + ordenar.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
         }else{
             onResume();
         }
@@ -136,7 +136,7 @@ public class ListaActivity extends AppCompatActivity {
         custoSubtatol = (TextView) findViewById(R.id.textCustoSubtotal);
 
         fab = (FloatingActionButton)findViewById(R.id.activity_lista_fab_novo_item);
-        listaUtil = new ListaUtil();
+        listaProdutosViewUtil = new ListaProdutosViewUtil();
     }
 
     public void ordenarList (String valor){
@@ -255,7 +255,7 @@ public class ListaActivity extends AppCompatActivity {
         final Produto produtoAtualizar = produtosAuxiliar.get(menuInfo.position);
 
         //intent para ir para outra activity
-        Intent it = new Intent(this, FormularioActivity.class);
+        Intent it = new Intent(this, FormularioProdutoActivity.class);
 
         //incluir na intent os dados do produto a ser atualizado
         it.putExtra("produto", produtoAtualizar);
@@ -290,7 +290,7 @@ public class ListaActivity extends AppCompatActivity {
                         //excluir efetivamento
                         dao.deletar(produtoExcluir);
 
-                        custoTotal.setText(String.valueOf(listaUtil.calcValor(produtosAuxiliar)));
+                        custoTotal.setText(String.valueOf(listaProdutosViewUtil.calculaValorTotal(produtosAuxiliar)));
                         //resetar a lista de produtos
                         listView.invalidateViews();
                     }
@@ -320,13 +320,11 @@ public class ListaActivity extends AppCompatActivity {
         /*
             Verificando a quantidade de itens que ainda falta comprar
          */
-        QtdItens.setText(String.valueOf(listaUtil.calcItens(produtosAuxiliar)));
-        custoTotal.setText(listaUtil.calcValor(produtosAuxiliar));
-        custoSubtatol.setText(listaUtil.calcValorSubtotaL(produtosAuxiliar));
+        QtdItens.setText(String.valueOf(listaProdutosViewUtil.ItensQueFalta(produtosAuxiliar)));
+        custoTotal.setText(listaProdutosViewUtil.calculaValorTotal(produtosAuxiliar));
+        custoSubtatol.setText(listaProdutosViewUtil.calculaValorSubtotaL(produtosAuxiliar));
 
         //"reseta" a listView
         listView.invalidateViews();
-
     }
-
 }
